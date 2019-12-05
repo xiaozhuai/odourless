@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+# /System/Library/CoreServices/Finder.app
+
+import frida
+import sys
+
+def on_message(message, data):
+    if message['type'] == 'error':
+        print("[!!!!!] " + message['stack'])
+    elif message['type'] == 'send':
+        print("[iiiii] " + message['payload'])
+    else:
+        print(message)
+
+
+pid = int(sys.argv[1])
+
+print("- Finder pid : %s" % pid)
+
+file = open("agent.js")
+src = file.read()
+file.close()
+
+session = frida.attach(pid)
+
+script = session.create_script(src)
+script.on("message", on_message)
+script.load()
+print("[!] Ctrl+D or Ctrl+Z to detach from instrumented program.\n\n")
+sys.stdin.read()
+session.detach()
