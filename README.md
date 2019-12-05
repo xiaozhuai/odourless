@@ -1,6 +1,6 @@
 # odourless
 
-Odourless is tool for preventing .DS_Store creation.
+Odourless is a tool for preventing .DS_Store creation.
 
 This project is just a prototype at present, so use it as your own risk.
 

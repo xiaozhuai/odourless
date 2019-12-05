@@ -18,7 +18,7 @@ var real_open = getRealFunc({
     argsType: ['pointer', 'int', 'int'],
 });
 
-var real_reamove = getRealFunc({
+var real_remove = getRealFunc({
     module: null,
     func: 'remove',
     retType: 'int',
@@ -36,7 +36,7 @@ hook({
         var mode = args[2];
         if (path.endsWith('/.DS_Store')) {
             console.log('!!! open(path=' + path + ', flags=' + flags + ', mode=' + mode + ')');
-            var ret = real_reamove(args[0]);
+            var ret = real_remove(args[0]);
             console.log('!!! remove(path=' + path + ') = ' + ret);
             return -1;
         }
