@@ -4,7 +4,7 @@ Odourless is a tool for preventing .DS_Store creation.
 
 This project is just a prototype at present. So it use python and js so far. Whenever it ready, it will switch to c/c++ version.
 
-**Use it as your own risk.**
+**Use it at your own risk.**
 
 # How it works
 
