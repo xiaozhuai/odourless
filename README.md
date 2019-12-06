@@ -2,13 +2,21 @@
 
 Odourless is a tool for preventing .DS_Store creation.
 
-This project is just a prototype at present, so use it as your own risk.
+This project is just a prototype at present. So it use python and js so far. Whenever it ready, it will switch to c/c++ version.
+
+**Use it as your own risk.**
 
 # How it works
 
-It use frida to hook into `Finder.app`, and replace the `open` syscall.
+It use frida to hook into `Finder.app`, and replace the `open`, `openx_np`, `getattrlist`, `setattrlist` syscall.
 
-Whenever `Finder` try to `open` a file name ends with `/.DS_Store`, call `remove` and then return `-1`.
+Whenever `Finder` try call these function with `.DS_Store` file, it will replace the path to a fake one under the odourless cage directory `/usr/local/var/.odourless_cage`.
+
+As you see, it do not delete `.DS_Store`, but place all `.DS_Store` into one directory that you donot care about.
+
+Many thanks to [@darwin](https://github.com/darwin) and [@JK3Y](https://github.com/JK3Y) !
+
+This project was standing on the shoulders of [binaryage/asepsis](https://github.com/binaryage/asepsis) and [JK3Y/asepsis](https://github.com/JK3Y/asepsis)
 
 # How to use it
 

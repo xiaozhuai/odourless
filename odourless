@@ -4,6 +4,7 @@
 
 import frida
 import sys
+import os
 
 def on_message(message, data):
     if message['type'] == 'error':
@@ -13,6 +14,8 @@ def on_message(message, data):
     else:
         print(message)
 
+
+os.makedirs("/usr/local/var/.odourless_cage", 0o755, True)
 
 pid = int(sys.argv[1])
 
