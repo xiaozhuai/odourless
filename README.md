@@ -18,6 +18,8 @@ Many thanks to [@darwin](https://github.com/darwin) and [@JK3Y](https://github.c
 
 This project was standing on the shoulders of [binaryage/asepsis](https://github.com/binaryage/asepsis) and [JK3Y/asepsis](https://github.com/JK3Y/asepsis)
 
+For discussion, go [https://github.com/JK3Y/asepsis/issues/25](https://github.com/JK3Y/asepsis/issues/25)
+
 # How to use it
 
 ## Disable SIP
