@@ -1,18 +1,18 @@
 # odourless
 
-Odourless is a tool for preventing .DS_Store creation.
+Odourless is a tool for preventing .DS_Store file creation.
 
-This project is just a prototype at present. So it use python and js so far. Whenever it ready, it will switch to c/c++ version.
+This project is just a prototype at present. So it use python and js so far, but I will provide a c/c++ version at some point.
 
 **Use it at your own risk.**
 
-# How it works
+## How it works
 
-It use frida to hook into `Finder.app`, and replace the `open`, `openx_np`, `getattrlist`, `setattrlist` syscall.
+Odourless hooks into `Finder.app` via frida, then replace some system calls including `open`, `openx_np`, `getattrlist`, `setattrlist`.
 
-Whenever `Finder` try call these function with `.DS_Store` file, it will replace the path to a fake one under the odourless cage directory `/usr/local/var/.odourless_cage`.
+Whenever `Finder` try call these functions with `.DS_Store` file, it will replace the path to a fake one under the odourless cage directory `/usr/local/var/.odourless_cage`.
 
-As you see, it do not delete `.DS_Store`, but place all `.DS_Store` into one directory that you donot care about.
+As you see, it do not delete `.DS_Store`, but place all `.DS_Store` into one directory that you don't care about.
 
 Many thanks to [@darwin](https://github.com/darwin) and [@JK3Y](https://github.com/JK3Y) !
 
@@ -20,28 +20,31 @@ This project was standing on the shoulders of [binaryage/asepsis](https://github
 
 For discussion, go [https://github.com/JK3Y/asepsis/issues/25](https://github.com/JK3Y/asepsis/issues/25)
 
-# How to use it
+## How to use it
 
-## Disable SIP
+### Disable SIP
 
 You need to disable [System Integrity Protection](https://support.apple.com/en-us/HT204899).
 
-## Install frida(python3 version)
+### Install frida(python3 version)
 
 ```
 pip3 install frida-tools
 ```
 
-## Disable asepsis
-If you already install asepsis, you need to uninstall it first. Then hold `option` and right click on `Finder` to restart it.
+### Disable asepsis
 
-## Here you go
+If you already installed asepsis, you need to uninstall it first.
+
+### Use odourless
+
+Press three keys together: `Option`, `Command`, and `Esc`, select the Finder app in the Force Quit window, then click `Relaunch` button to restart Finder app.
 
 ```
 ps -ax | grep Finder
 ```
 
-Here you got `Finder` pid. Then 
+Once you got `Finder` pid, run: 
 
 ```
 ./odourless [pid]
