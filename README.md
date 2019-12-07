@@ -36,9 +36,9 @@ pip3 install frida-tools
 
 If you already installed asepsis, you need to uninstall it first.
 
-### Use odourless
-
 Press three keys together: `Option`, `Command`, and `Esc`, select the Finder app in the Force Quit window, then click `Relaunch` button to restart Finder app.
+
+### Use odourless
 
 ```
 ps -ax | grep Finder
