@@ -1,5 +1,9 @@
 # odourless
 
+![logo.png](logo.png)
+
+[English README](README.md)
+
 Odourless是一个禁止MacOS系统生成.DS_Store的工具
 
 **当前是非稳定版, 使用需自行承担风险.**

@@ -1,5 +1,9 @@
 # odourless
 
+![logo.png](logo.png)
+
+[中文说明](README_CN.md)
+
 Odourless is a tool for preventing .DS_Store creation.
 
 **Alpha version! Use it at your own risk!**
