@@ -40,6 +40,21 @@ Ok, that's all.
 
 Next time reboot, `odourless-daemon` will auto-start. Take it easy.
 
+# How to build
+
+Odourless can build without `xcode`. But `Command Line Tools` is needed. 
+
+Install with `xcode-select --install`.
+
+```bash
+git clone https://github.com/xiaozhuai/odourless
+cd odourless
+makdir build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make install -j8
+open dist
+```
+
 # Under the hood
 
 ## Odourless.app
