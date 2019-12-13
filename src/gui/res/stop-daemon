@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+/usr/bin/sudo /bin/launchctl stop "odourless-daemon"
+/usr/bin/sudo /usr/bin/killall Finder

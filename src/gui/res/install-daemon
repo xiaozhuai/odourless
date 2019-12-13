@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+/bin/cat "${DIR}/odourless-daemon.plist" | /usr/bin/sed "s#___replace_me_daemon_path__#${DIR}/bin/odourless-daemon#" | /usr/bin/sudo cat > "/Library/LaunchDaemons/odourless-daemon.plist"
+/usr/bin/sudo /usr/bin/killall Finder
+/usr/bin/sudo /bin/launchctl load "/Library/LaunchDaemons/odourless-daemon.plist"

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/osascript -e "do shell script \"$@\" with administrator privileges"

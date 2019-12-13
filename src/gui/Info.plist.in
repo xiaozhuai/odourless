@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleDisplayName</key>
+        <string>Odourless</string>
+        <key>CFBundleExecutable</key>
+        <string>odourless</string>
+        <key>CFBundleGetInfoString</key>
+        <string>Odourless is a tool for preventing .DS_Store creation.</string>
+        <key>CFBundleIconFile</key>
+        <string>AppIcon.icns</string>
+        <key>CFBundleIdentifier</key>
+        <string>io.github.xiaozhuai.odourless</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundleLongVersionString</key>
+        <string>${MACOSX_BUNDLE_LONG_VERSION_STRING}</string>
+        <key>CFBundleName</key>
+        <string>Odourless</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleShortVersionString</key>
+        <string>${MACOSX_BUNDLE_SHORT_VERSION_STRING}</string>
+        <key>CFBundleSignature</key>
+        <string>????</string>
+        <key>CFBundleVersion</key>
+        <string>${MACOSX_BUNDLE_BUNDLE_VERSION}</string>
+        <key>CSResourcesFileMapped</key>
+        <true/>
+        <key>NSHumanReadableCopyright</key>
+        <string>Copyright © 2019 xiaozhuai.</string>
+        <key>NSHighResolutionCapable</key>
+        <string>True</string>
+    </dict>
+</plist>
