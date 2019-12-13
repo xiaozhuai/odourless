@@ -2,7 +2,7 @@
 
 Odourless is a tool for preventing .DS_Store creation.
 
-**Use it at your own risk.**
+**Alpha version! Use it at your own risk!**
 
 # How it works
 
@@ -22,21 +22,7 @@ For discussion, go [https://github.com/JK3Y/asepsis/issues/25](https://github.co
 
 ## Install
 
-Download for release page. And install.
-
-## Disable SIP
-
-1. Click the Apple symbol in the Menu bar.
-2. Click Restart...
-3. Hold down Command-R to reboot into Recovery Mode.
-4. Click Utilities.
-5. Select Terminal.
-6. Type `csrutil disable`.
-7. Press Return or Enter on your keyboard.
-8. Click the Apple symbol in the Menu bar.
-9. Click Restart…
-
-## Install Odourless.app in /Applications
+Download from release page.
 
 Move `Odourless.app` to `/Applications`, open it and click to `install` daemon.
 
@@ -44,11 +30,27 @@ Ok, that's all.
 
 Next time reboot, `odourless-daemon` will auto-start. Take it easy.
 
+## Disable SIP
+
+You must disable SIP to use this program.
+
+1. Click the Apple symbol in the Menu bar.
+2. Click Restart...
+3. Hold down Command-R to reboot into Recovery Mode.
+4. Click Utilities.
+5. Select Terminal.
+6. Type `csrutil disable` and press Enter (May ask for password)
+7. reboot
+
 # How to build
 
 Odourless can build without `xcode`. But `Command Line Tools` is needed. 
 
-Install with `xcode-select --install`.
+Type `xcode-select --install` to install `Command Line Tools`.
+
+And you need `cmake`.
+
+Type `brew install cmake` to install `cmake`.
 
 ```bash
 git clone https://github.com/xiaozhuai/odourless
