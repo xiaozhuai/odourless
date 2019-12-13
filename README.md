@@ -20,6 +20,10 @@ For discussion, go [https://github.com/JK3Y/asepsis/issues/25](https://github.co
 
 # How to use it
 
+## Install
+
+Download for release page. And install.
+
 ## Disable SIP
 
 1. Click the Apple symbol in the Menu bar.
