@@ -59,7 +59,7 @@ Type `brew install cmake` to install `cmake`.
 ```bash
 git clone https://github.com/xiaozhuai/odourless
 cd odourless
-makdir build
+mkdir build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make install -j8
 open dist

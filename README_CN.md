@@ -34,7 +34,7 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具
 
 ## 关闭SIP
 
-You must disable SIP to use this program.
+使用此应用, 你必须关闭SIP.
 
 1. 点击顶部菜单栏苹果图标
 2. 点击重启...
@@ -57,7 +57,7 @@ You must disable SIP to use this program.
 ```bash
 git clone https://github.com/xiaozhuai/odourless
 cd odourless
-makdir build
+mkdir build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make install -j8
 open dist
