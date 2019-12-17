@@ -58,6 +58,7 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具
 git clone https://github.com/xiaozhuai/odourless
 cd odourless
 mkdir build
+cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make install -j8
 open dist

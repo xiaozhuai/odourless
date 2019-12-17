@@ -7,7 +7,6 @@
 
 #include <string>
 
-#define CAGE_DIRECTORY_PATH "/usr/local/var/.odourless_cage"
 
 class DSStoreHelper {
 public:

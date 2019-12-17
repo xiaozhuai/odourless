@@ -10,6 +10,8 @@
 //#define ODOURLESS_INSTALL_PATH  "/Users/xiaozhuai/work/odourless/cmake-build-debug/Odourless.app"
 //#define ODOURLESS_INSTALL_PATH  "/Applications/Odourless.app"
 
+#define CAGE_DIRECTORY_PATH "/usr/local/var/.odourless_cage"
+
 typedef struct {
     bool suc;
     int ret;

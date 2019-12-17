@@ -98,11 +98,6 @@ static int replacement_setattrlist(const char *path, void *list, void *buf, size
 }
 
 bool apply_asepsis_strategy() {
-    if (!FileSystemHelper::ensureDir(CAGE_DIRECTORY_PATH, 0755, true)) {
-        LOGE("ensure cage directory \"%s\" failed!", CAGE_DIRECTORY_PATH);
-        return false;
-    }
-
     real_open = Hook::getRealFunc<open_t>("open");
     real_openx_np = Hook::getRealFunc<openx_np_t>("openx_np");
     real_getattrlist = Hook::getRealFunc<getattrlist_t>("getattrlist");

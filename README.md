@@ -22,7 +22,7 @@ This project was standing on the shoulders of [binaryage/asepsis](https://github
 
 For discussion, go [https://github.com/JK3Y/asepsis/issues/25](https://github.com/JK3Y/asepsis/issues/25)
 
-# How to use it
+# How to use
 
 ## Install
 
@@ -60,6 +60,7 @@ Type `brew install cmake` to install `cmake`.
 git clone https://github.com/xiaozhuai/odourless
 cd odourless
 mkdir build
+cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make install -j8
 open dist

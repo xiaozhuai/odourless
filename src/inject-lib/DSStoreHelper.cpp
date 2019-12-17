@@ -4,6 +4,7 @@
 
 #include "DSStoreHelper.h"
 #include "FileSystemHelper.h"
+#include "OdourlessUtils.h"
 
 bool DSStoreHelper::isDSStore(const std::string &path) {
     return FileSystemHelper::getName(path) == ".DS_Store"

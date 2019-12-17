@@ -21,6 +21,8 @@ public:
 
     static bool rename(const std::string &src, const std::string &dst);
 
+    static bool chmod(const std::string &path, int mode);
+
 };
 
 
