@@ -4,7 +4,7 @@
 
 [English README](README.md)
 
-Odourless是一个禁止MacOS系统生成.DS_Store的工具
+Odourless是一个禁止MacOS系统生成.DS_Store的工具. 它适用于最新的MacOS Catalina.
 
 **当前是非稳定版, 使用需自行承担风险.**
 

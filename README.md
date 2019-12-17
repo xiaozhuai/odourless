@@ -4,7 +4,7 @@
 
 [中文说明](README_CN.md)
 
-Odourless is a tool for preventing .DS_Store creation.
+Odourless is a tool for preventing .DS_Store creation. It works on MacOS latest Catalina.
 
 **Alpha version! Use it at your own risk!**
 
