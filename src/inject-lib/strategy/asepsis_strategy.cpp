@@ -26,8 +26,9 @@ setattrlist_t real_setattrlist = nullptr;
 
 
 static int replacement_open(const char *path, int flags, mode_t mode) {
+    std::string fakePath;
     if (DSStoreHelper::isDSStore(path)) {
-        std::string fakePath = DSStoreHelper::makeCagePath(path);
+        fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
@@ -44,8 +45,9 @@ static int replacement_open(const char *path, int flags, mode_t mode) {
 }
 
 static int replacement_openx_np(const char *path, int flags, filesec_t fsec) {
+    std::string fakePath;
     if (DSStoreHelper::isDSStore(path)) {
-        std::string fakePath = DSStoreHelper::makeCagePath(path);
+        fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
@@ -62,8 +64,9 @@ static int replacement_openx_np(const char *path, int flags, filesec_t fsec) {
 }
 
 static int replacement_getattrlist(const char *path, void *list, void *buf, size_t bufSize, unsigned int options) {
+    std::string fakePath;
     if (DSStoreHelper::isDSStore(path)) {
-        std::string fakePath = DSStoreHelper::makeCagePath(path);
+        fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
@@ -80,8 +83,9 @@ static int replacement_getattrlist(const char *path, void *list, void *buf, size
 }
 
 static int replacement_setattrlist(const char *path, void *list, void *buf, size_t bufSize, unsigned int options) {
+    std::string fakePath;
     if (DSStoreHelper::isDSStore(path)) {
-        std::string fakePath = DSStoreHelper::makeCagePath(path);
+        fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
