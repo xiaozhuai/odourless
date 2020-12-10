@@ -20,7 +20,7 @@ bool OdourlessUtils::daemonInstalled() {
 }
 
 bool OdourlessUtils::daemonRunning() {
-    return ProcessHelper::getPidByProcessPath(ODOURLESS_INSTALL_PATH "/Contents/Resources/bin/odourless-daemon") != 0;
+    return ProcessHelper::getPidByProcessPath(ODOURLESS_INSTALL_PATH "/Contents/Resources/bin/odourless-daemon") != -1;
 }
 
 ExecResult OdourlessUtils::installDaemon() {

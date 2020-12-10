@@ -12,7 +12,7 @@ __attribute__ ((destructor)) static void deinit();
 }
 
 void init() {
-    Log::init("/tmp/odourless-inject.log");
+    Log::init(CAGE_DIRECTORY_PATH "/inject.log");
     LOG("odourless-inject init");
     Hook::init();
     if (!apply_asepsis_strategy()) {

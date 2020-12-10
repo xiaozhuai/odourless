@@ -3,7 +3,9 @@ project(odourless)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(ODOURLESS_VERSION 0.0.3)
+set(ODOURLESS_VERSION 0.0.4)
+
+set(CMAKE_OSX_DEPLOYMENT_TARGET 10.12)
 
 set(ODOURLESS_MUST_INSTALL_TO_APPLICATIONS ON)
 
@@ -15,6 +17,7 @@ else()
 endif()
 
 add_definitions(-DODOURLESS_VERSION="${ODOURLESS_VERSION}")
+add_definitions(-DCAGE_DIRECTORY_PATH="/usr/local/var/.odourless_cage")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Odourless.app/Contents/Resources/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Odourless.app/Contents/Resources/lib)

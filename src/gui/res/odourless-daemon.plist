@@ -8,10 +8,6 @@
         <array>
             <string>___replace_me_daemon_path__</string>
         </array>
-        <key>StandardOutPath</key>
-        <string>/tmp/odourless-daemon.log</string>
-        <key>StandardErrorPath</key>
-        <string>/tmp/odourless-daemon.log</string>
         <key>RunAtLoad</key>
         <true/>
     </dict>

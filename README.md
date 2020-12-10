@@ -8,6 +8,9 @@ Odourless is a tool for preventing .DS_Store creation. It works on MacOS latest 
 
 **Alpha version! Use it at your own risk!**
 
+# Preview
+![preview.png](preview.png)
+
 # How it works
 
 It use `mach_inject` to inject `Finder.app` and `frida-gum` to replace some syscall including `open`, `openx_np`, `getattrlist`, `setattrlist`.
@@ -81,6 +84,6 @@ When `Finder` restarted, `odourless-daemon` will do re-inject.
 
 If you prefer command line than graphics `Odourless.app`, you may like this. (Not yet available)
 
-## libodourless-inject.lib
+## libodourless-inject.dylib
 
 Replace syscall in `Finder` process.

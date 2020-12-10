@@ -38,7 +38,7 @@ pid_t ProcessHelper::getPidByProcessName(const std::string &name) {
             return processInfo.pid;
         }
     }
-    return 0;
+    return -1;
 }
 
 pid_t ProcessHelper::getPidByProcessPath(const std::string &path) {
@@ -49,7 +49,7 @@ pid_t ProcessHelper::getPidByProcessPath(const std::string &path) {
             return processInfo.pid;
         }
     }
-    return 0;
+    return -1;
 }
 
 std::string ProcessHelper::getCurrentWorkspaceDirectory() {

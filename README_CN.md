@@ -8,6 +8,9 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具. 它适用于最新�
 
 **当前是非稳定版, 使用需自行承担风险.**
 
+# 预览
+![preview.png](preview.png)
+
 # 如何工作
 
 使用 `mach_inject` 注入 `Finder.app` 进程, 通过 `frida-gum` 来替换部分系统调用, 包括 `open`, `openx_np`, `getattrlist`, `setattrlist`.
@@ -79,6 +82,6 @@ Odourless.app 仅仅是一个用于安装/卸载和管理 `odourless-daemon` 的
 
 和 Odourless.app 的功能相同, 命令行方式管理 `odourless-daemon` 的工具. 如果你更喜欢命令行的话. (暂不可用)
 
-## libodourless-inject.lib
+## libodourless-inject.dylib
 
 替换 `Finder` 进程中的部分系统调用.

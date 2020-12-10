@@ -11,8 +11,10 @@
 #include <csignal>
 #include <unistd.h>
 
-pid_t finderPid = 0;
+pid_t finderPid = -1;
 bool monitoring = true;
+
+// TODO 监听文件夹删除,移动,拷贝,并在前缀文件夹中重现
 
 void sigHandler(int sig) {
     if (sig == SIGINT) {
@@ -21,7 +23,7 @@ void sigHandler(int sig) {
 }
 
 int main(int argc, char **argv) {
-    Log::init();
+    Log::init(CAGE_DIRECTORY_PATH "/daemon.log");
 
     if (getuid() > 0) {
         LOGE("please run me as root");
@@ -49,27 +51,24 @@ int main(int argc, char **argv) {
 
     while (monitoring) {
         pid_t pid = ProcessHelper::getPidByProcessPath(finderProcessPath);
-        if (finderPid == 0) {
-            if (pid != 0) {
+        if (pid == -1) {
+            LOG("finder not running, retrying...");
+            sleep(3);
+        } else {
+            if (finderPid != pid) {
+                if (finderPid == -1) {
+                    LOG("finder pid: %u", pid);
+                } else {
+                    LOG("finder restarted, pid: %u", pid);
+                }
                 finderPid = pid;
-                LOG("finder pid: %u", finderPid);
-
                 sleep(3);
                 inj.inject(finderPid, injectLib);
             } else {
-                LOG("finder not running");
-            }
-        } else {
-            if (pid != finderPid) {
-                finderPid = pid;
-                LOG("finder restarted, pid: %u", finderPid);
-
                 sleep(3);
-                inj.inject(finderPid, injectLib);
+                // OK
             }
         }
-
-        sleep(3);
     }
 
     Log::destroy();

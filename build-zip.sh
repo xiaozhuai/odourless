@@ -20,8 +20,9 @@ install_name_tool -change "@rpath/libwx_osx_cocoau-3.1.dylib" "@executable_path/
 
 #otool -L "${DIST}/Odourless.app/Contents/MacOS/odourless"
 #otool -L "${DIST}/Odourless.app/Contents/Frameworks/libwx_osx_cocoau-3.1.dylib"
+#install_name_tool -id "xxx" xxx/dylib
 
 echo "Create zip"
-cd "${DIST}"
+cd "${DIST}" || exit
 zip "Odourless_${VERSION}.zip" -r "Odourless.app" > /dev/null
-cd --
+cd - || exit

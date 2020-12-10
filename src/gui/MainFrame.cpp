@@ -20,6 +20,8 @@
 #define REPO_RELEASES_API_URL   "https://api.github.com/repos/xiaozhuai/odourless/releases"
 #define REPO_LATEST_RELEASE_URL "https://github.com/xiaozhuai/odourless/releases/latest"
 
+// TODO 更新后提示重新安装daemon
+
 MainFrame::MainFrame()
         : wxFrame(nullptr, wxID_ANY, "Odourless", wxDefaultPosition, wxSize(400, 300), wxSYSTEM_MENU | wxCLOSE_BOX | wxCAPTION),
           m_daemonInstalled(false),
