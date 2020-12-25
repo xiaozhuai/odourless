@@ -6,7 +6,7 @@
 
 Odourless is a tool for preventing .DS_Store creation.
 
-Supported from 10.12 to 10.15.7, not tested on Big Sur.
+Supported from 10.12 to Big Sur.
 
 **Alpha version! Use it at your own risk!**
 
