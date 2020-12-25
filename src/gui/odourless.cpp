@@ -24,15 +24,19 @@ public:
     }
 
     bool OnInit() override {
-        if(OdourlessUtils::checkSIPEnabled()) {
+        if (OdourlessUtils::checkSIPEnabled()) {
             wxMessageBox("You must disable SIP to use this application", "SIP Check", wxOK | wxICON_ERROR);
             Exit();
             return false;
         }
 
 #ifdef ODOURLESS_MUST_INSTALL_TO_APPLICATIONS
-        if(ProcessHelper::getCurrentExecutablePath() != ODOURLESS_INSTALL_PATH "/Contents/MacOS/odourless") {
-            wxMessageBox("You must install this application under /Applications", "Installation Check", wxOK | wxICON_ERROR);
+        if (ProcessHelper::getCurrentApplicationPath() != ODOURLESS_INSTALL_PATH) {
+            char msg[1024];
+            snprintf(msg, 1024,
+                     "You must install this application as %s, but not %s",
+                     ODOURLESS_INSTALL_PATH, ProcessHelper::getCurrentApplicationPath().c_str());
+            wxMessageBox(msg, "Installation Check", wxOK | wxICON_ERROR);
             Exit();
             return false;
         }

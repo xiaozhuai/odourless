@@ -28,6 +28,8 @@ public:
 
     static std::string getCurrentExecutablePath();
 
+    static std::string getCurrentApplicationPath();
+
     static std::string getCurrentExecutableDirectory();
 
     static std::string getCurrentExecutableName();

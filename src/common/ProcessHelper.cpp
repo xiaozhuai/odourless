@@ -65,6 +65,12 @@ std::string ProcessHelper::getCurrentExecutablePath() {
     return FileSystemHelper::realpath(path);
 }
 
+std::string ProcessHelper::getCurrentApplicationPath() {
+    std::string exePath = getCurrentExecutablePath();
+    int pos = exePath.find(".app/");
+    return exePath.substr(0, pos + 4);
+}
+
 std::string ProcessHelper::getCurrentExecutableDirectory() {
     return FileSystemHelper::getDirectory(getCurrentExecutablePath());
 }
