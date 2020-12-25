@@ -60,6 +60,8 @@ void MainFrame::InitGeneralWindow() {
     m_restartDaemonButton = std::make_shared<wxButton>(m_generalWindow.get(), ID_BUTTON_RESTART_DAEMON, "restart", wxPoint(256, 38));
     UpdateDaemonRunningStatus();
 
+    m_showDaemonLogButton = std::make_shared<wxButton>(m_generalWindow.get(), ID_BUTTON_SHOW_DAEMON_LOG, "Show Daemon Log", wxPoint(16, 94));
+    m_showInjectLogButton = std::make_shared<wxButton>(m_generalWindow.get(), ID_BUTTON_SHOW_INJECT_LOG, "Show Inject Log", wxPoint(16, 126));
     m_checkForUpdatesButton = std::make_shared<wxButton>(m_generalWindow.get(), ID_BUTTON_CHECK_FOR_UPDATES, "Check for Updates...", wxPoint(16, 158));
 }
 
@@ -177,6 +179,14 @@ void MainFrame::OnRestartDaemonButtonClicked(wxCommandEvent &event) {
     m_restartDaemonButton->Enable();
 }
 
+void MainFrame::OnShowDaemonLogClicked(wxCommandEvent &event) {
+    OdourlessUtils::showDaemonLog();
+}
+
+void MainFrame::OnShowInjectLogClicked(wxCommandEvent &event) {
+    OdourlessUtils::showInjectLog();
+}
+
 void MainFrame::OnCheckForUpdatesClicked(wxCommandEvent &event) {
     LOG("OnCheckForUpdatesClicked");
     m_checkForUpdatesButton->Disable();
@@ -192,5 +202,7 @@ BEGIN_EVENT_TABLE(MainFrame, wxFrame)
     EVT_BUTTON(ID_BUTTON_INSTALL_UNINSTALL_DAEMON, MainFrame::OnInstallUninstallButtonClicked)
     EVT_BUTTON(ID_BUTTON_START_STOP_DAEMON, MainFrame::OnStartStopDaemonButtonClicked)
     EVT_BUTTON(ID_BUTTON_RESTART_DAEMON, MainFrame::OnRestartDaemonButtonClicked)
+    EVT_BUTTON(ID_BUTTON_SHOW_DAEMON_LOG, MainFrame::OnShowDaemonLogClicked)
+    EVT_BUTTON(ID_BUTTON_SHOW_INJECT_LOG, MainFrame::OnShowInjectLogClicked)
     EVT_BUTTON(ID_BUTTON_CHECK_FOR_UPDATES, MainFrame::OnCheckForUpdatesClicked)
 END_EVENT_TABLE()

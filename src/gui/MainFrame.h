@@ -32,6 +32,9 @@ private:
     std::shared_ptr<wxButton> m_startStopButton;
     std::shared_ptr<wxButton> m_restartDaemonButton;
 
+    std::shared_ptr<wxButton> m_showDaemonLogButton;
+    std::shared_ptr<wxButton> m_showInjectLogButton;
+
     // About Window
     std::shared_ptr<wxStaticText> m_aboutText;
     std::shared_ptr<wxHyperlinkCtrl> m_projectRepoLink;
@@ -69,6 +72,10 @@ private:
 
     void OnRestartDaemonButtonClicked(wxCommandEvent &event);
 
+    void OnShowDaemonLogClicked(wxCommandEvent &event);
+
+    void OnShowInjectLogClicked(wxCommandEvent &event);
+
     void OnCheckForUpdatesClicked(wxCommandEvent &event);
 
 private:
@@ -77,7 +84,9 @@ private:
         ID_BUTTON_INSTALL_UNINSTALL_DAEMON,
         ID_BUTTON_START_STOP_DAEMON,
         ID_BUTTON_RESTART_DAEMON,
-        ID_BUTTON_CHECK_FOR_UPDATES
+        ID_BUTTON_SHOW_DAEMON_LOG,
+        ID_BUTTON_SHOW_INJECT_LOG,
+        ID_BUTTON_CHECK_FOR_UPDATES,
     };
 
     DECLARE_EVENT_TABLE();

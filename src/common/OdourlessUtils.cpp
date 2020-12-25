@@ -43,6 +43,14 @@ ExecResult OdourlessUtils::restartDaemon() {
     return shellExec(ODOURLESS_INSTALL_PATH "/Contents/Resources/restart-daemon", true);
 }
 
+ExecResult OdourlessUtils::showDaemonLog() {
+    return shellExec("open -a console \"" CAGE_DIRECTORY_PATH "/daemon.log\"", false);
+}
+
+ExecResult OdourlessUtils::showInjectLog() {
+    return shellExec("open -a console \"" CAGE_DIRECTORY_PATH "/inject.log\"", false);
+}
+
 ExecResult OdourlessUtils::shellExec(const std::string &shellPath, bool sudo) {
     std::array<char, 1024> buffer{};
     std::string result;

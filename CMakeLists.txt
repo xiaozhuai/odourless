@@ -9,12 +9,12 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET 10.12)
 
 set(ODOURLESS_MUST_INSTALL_TO_APPLICATIONS ON)
 
-if(ODOURLESS_MUST_INSTALL_TO_APPLICATIONS)
+if (ODOURLESS_MUST_INSTALL_TO_APPLICATIONS)
     add_definitions(-DODOURLESS_MUST_INSTALL_TO_APPLICATIONS)
     add_definitions(-DODOURLESS_INSTALL_PATH="/Applications/Odourless.app")
-else()
+else ()
     add_definitions(-DODOURLESS_INSTALL_PATH="${CMAKE_BINARY_DIR}/Odourless.app")
-endif()
+endif ()
 
 add_definitions(-DODOURLESS_VERSION="${ODOURLESS_VERSION}")
 add_definitions(-DCAGE_DIRECTORY_PATH="/usr/local/var/.odourless_cage")

@@ -32,6 +32,10 @@ public:
 
     static ExecResult restartDaemon();
 
+    static ExecResult showDaemonLog();
+
+    static ExecResult showInjectLog();
+
     static ExecResult shellExec(const std::string &shellPath, bool sudo);
 };
 
