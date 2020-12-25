@@ -211,6 +211,11 @@ public:
     void SetAlignment(int l) { m_alignment = l; }
     int GetAlignment() const { return m_alignment; }
 
+    bool CanBeToggled() const
+    {
+        return m_kind == wxITEM_CHECK || m_kind == wxITEM_RADIO;
+    }
+
 private:
 
     wxWindow* m_window;          // item's associated window
@@ -525,6 +530,12 @@ public:
 
     void ClearTools() { Clear() ; }
     void Clear();
+
+    bool DestroyTool(int toolId);
+    bool DestroyToolByIndex(int idx);
+
+    // Note that these methods do _not_ delete the associated control, if any.
+    // Use DestroyTool() or DestroyToolByIndex() if this is wanted.
     bool DeleteTool(int toolId);
     bool DeleteByIndex(int toolId);
 
