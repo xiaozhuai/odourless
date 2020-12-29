@@ -5,11 +5,8 @@
 #include <dlfcn.h>
 #include <csignal>
 
-Injector::Injector(const std::string &bootstrapLib)
-        : module(nullptr),
-          bootstrapFunc(nullptr) {
+Injector::Injector(const std::string &bootstrapLib) {
     module = dlopen(bootstrapLib.c_str(), RTLD_NOW | RTLD_LOCAL);
-
     LOG("module: %p", module);
 
     if (!module) {
@@ -33,10 +30,10 @@ Injector::~Injector() {
     }
 }
 
-void Injector::inject(pid_t pid, const std::string &lib) {
+int Injector::inject(pid_t pid, const std::string &lib) {
     if (!module || !bootstrapFunc) {
-        LOGE("failed to inject: module:%p bootstrapFunc:%p", module, bootstrapFunc);
-        return;
+        LOGE("inject failed, module: %p, bootstrapFunc: %p", module, bootstrapFunc);
+        return 1000;
     }
-    mach_error_t err = mach_inject((mach_inject_entry) bootstrapFunc, lib.c_str(), lib.size() + 1, pid, 0);
+    return mach_inject((mach_inject_entry) bootstrapFunc, lib.c_str(), lib.size() + 1, pid, 0);
 }

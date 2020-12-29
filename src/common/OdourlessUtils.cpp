@@ -11,7 +11,7 @@
 
 bool OdourlessUtils::checkSIPEnabled() {
     auto res = shellExec("/usr/bin/csrutil status", false);
-    if(!res.suc) return false;
+    if (!res.suc) return false;
     return res.output.find("disabled") == std::string::npos;
 }
 
@@ -43,12 +43,23 @@ ExecResult OdourlessUtils::restartDaemon() {
     return shellExec(ODOURLESS_INSTALL_PATH "/Contents/Resources/restart-daemon", true);
 }
 
+std::string OdourlessUtils::getDaemonLogPath() {
+//    return "/var/log/odourless-daemon.log";
+    return CAGE_DIRECTORY_PATH "/daemon.log";
+}
+
+std::string OdourlessUtils::getInjectLogPath() {
+//    std::string home = getenv("HOME");
+//    return home + "/Library/Logs/odourless-inject.log";
+    return CAGE_DIRECTORY_PATH "/inject.log";
+}
+
 ExecResult OdourlessUtils::showDaemonLog() {
-    return shellExec("open -a console \"" CAGE_DIRECTORY_PATH "/daemon.log\"", false);
+    return shellExec(tfm::format("open -a console \"%s\"", getDaemonLogPath()), false);
 }
 
 ExecResult OdourlessUtils::showInjectLog() {
-    return shellExec("open -a console \"" CAGE_DIRECTORY_PATH "/inject.log\"", false);
+    return shellExec(tfm::format("open -a console \"%s\"", getInjectLogPath()), false);
 }
 
 ExecResult OdourlessUtils::shellExec(const std::string &shellPath, bool sudo) {
@@ -66,15 +77,15 @@ ExecResult OdourlessUtils::shellExec(const std::string &shellPath, bool sudo) {
 
     if (!pipe) {
         return {
-                .ret = 1,
                 .suc = false,
+                .ret = 1,
                 .output = "popen() failed!"
         };
     }
 
     while (!feof(pipe)) {
         if (fgets(buffer.data(), 1024, pipe) != nullptr) {}
-            result += buffer.data();
+        result += buffer.data();
     }
 
     auto rc = pclose(pipe);
@@ -85,8 +96,8 @@ ExecResult OdourlessUtils::shellExec(const std::string &shellPath, bool sudo) {
     }
 
     return {
-            .ret = rc,
             .suc = rc == 0,
+            .ret = rc,
             .output = result
     };
 }

@@ -23,6 +23,8 @@ public:
 
     static bool chmod(const std::string &path, int mode);
 
+    static bool remove(const std::string &path);
+
 };
 
 

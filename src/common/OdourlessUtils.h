@@ -32,6 +32,10 @@ public:
 
     static ExecResult restartDaemon();
 
+    static std::string getDaemonLogPath();
+
+    static std::string getInjectLogPath();
+
     static ExecResult showDaemonLog();
 
     static ExecResult showInjectLog();

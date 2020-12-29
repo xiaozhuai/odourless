@@ -4,6 +4,7 @@
 
 #include "Log.h"
 #include "Hook.h"
+#include "OdourlessUtils.h"
 #include "strategy/asepsis_strategy.h"
 
 extern "C" {
@@ -12,7 +13,7 @@ __attribute__ ((destructor)) static void deinit();
 }
 
 void init() {
-    Log::init(CAGE_DIRECTORY_PATH "/inject.log");
+    Log::init(OdourlessUtils::getInjectLogPath());
     LOG("odourless-inject init");
     Hook::init();
     if (!apply_asepsis_strategy()) {

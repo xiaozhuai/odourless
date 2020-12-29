@@ -69,3 +69,7 @@ bool FileSystemHelper::rename(const std::string &src, const std::string &dst) {
 bool FileSystemHelper::chmod(const std::string &path, int mode) {
     return ::chmod(path.c_str(), mode) == 0;
 }
+
+bool FileSystemHelper::remove(const std::string &path) {
+    return ::remove(path.c_str()) == 0;
+}

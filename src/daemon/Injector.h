@@ -10,11 +10,11 @@ public:
 
     ~Injector();
 
-    void inject(pid_t pid, const std::string &lib);
+    int inject(pid_t pid, const std::string &lib);
 
 private:
-    void *module;
-    void *bootstrapFunc;
+    void *module = nullptr;
+    void *bootstrapFunc = nullptr;
 };
 
 #endif

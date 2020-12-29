@@ -16,7 +16,7 @@ void Hook::destroy() {
     delete instance;
 }
 
-Hook::Hook() : m_interceptor(nullptr) {
+Hook::Hook() {
     gum_init_embedded();
     m_interceptor = gum_interceptor_obtain();
 }

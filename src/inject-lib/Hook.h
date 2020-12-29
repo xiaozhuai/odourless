@@ -47,7 +47,7 @@ private:
 
 private:
     static Hook *instance;
-    GumInterceptor *m_interceptor;
+    GumInterceptor *m_interceptor = nullptr;
 
 };
 

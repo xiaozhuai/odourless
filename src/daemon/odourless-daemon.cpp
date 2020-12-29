@@ -23,7 +23,7 @@ void sigHandler(int sig) {
 }
 
 int main(int argc, char **argv) {
-    Log::init(CAGE_DIRECTORY_PATH "/daemon.log");
+    Log::init(OdourlessUtils::getDaemonLogPath());
 
     if (getuid() > 0) {
         LOGE("please run me as root");
@@ -42,8 +42,8 @@ int main(int argc, char **argv) {
 
     const std::string finderProcessPath = "/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder";
     const std::string executableDirectory = ProcessHelper::getCurrentExecutableDirectory();
-    const std::string bootstrapLib = executableDirectory + "/../lib/libbootstrap.dylib";
-    const std::string injectLib = executableDirectory + "/../lib/libodourless-inject.dylib";
+    const std::string bootstrapLib = FileSystemHelper::realpath(executableDirectory + "/../lib/libbootstrap.dylib");
+    const std::string injectLib = FileSystemHelper::realpath(executableDirectory + "/../lib/libodourless-inject.dylib");
 
     Injector inj(bootstrapLib);
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     while (monitoring) {
         pid_t pid = ProcessHelper::getPidByProcessPath(finderProcessPath);
         if (pid == -1) {
-            LOG("finder not running, retrying...");
+            LOGE("finder not running, retrying...");
             sleep(3);
         } else {
             if (finderPid != pid) {
@@ -63,7 +63,12 @@ int main(int argc, char **argv) {
                 }
                 finderPid = pid;
                 sleep(3);
-                inj.inject(finderPid, injectLib);
+                int err;
+                if ((err = inj.inject(finderPid, injectLib)) != 0) {
+                    LOGE("inject failed, error: %d", err);
+                } else {
+                    LOG("inject suc");
+                }
             } else {
                 sleep(3);
                 // OK

@@ -31,5 +31,5 @@ Log::Log()
         : m_stdout(std::cout) {}
 
 Log::Log(const std::string &logFile)
-        : m_stdoutFStream(logFile, std::ios::trunc),
+        : m_stdoutFStream(logFile, std::ios::out | std::ios::trunc),
           m_stdout(m_stdoutFStream) {}
