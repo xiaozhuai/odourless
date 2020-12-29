@@ -44,8 +44,8 @@ private:
     std::shared_ptr<wxTimer> m_checkDaemonStatusTimer;
 
 private:
-    bool m_daemonInstalled;
-    bool m_daemonRunning;
+    bool m_daemonInstalled = false;
+    bool m_daemonRunning = false;
 
 private:
     void InitTimer();

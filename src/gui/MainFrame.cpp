@@ -23,9 +23,7 @@
 // TODO 更新后提示重新安装daemon
 
 MainFrame::MainFrame()
-        : wxFrame(nullptr, wxID_ANY, "Odourless", wxDefaultPosition, wxSize(400, 300), wxSYSTEM_MENU | wxCLOSE_BOX | wxCAPTION),
-          m_daemonInstalled(false),
-          m_daemonRunning(false) {
+        : wxFrame(nullptr, wxID_ANY, "Odourless", wxDefaultPosition, wxSize(400, 300), wxSYSTEM_MENU | wxCLOSE_BOX | wxCAPTION) {
 
     InitTimer();
     InitStatusBar();
@@ -73,7 +71,7 @@ void MainFrame::InitAboutWindow() {
 
 void MainFrame::InitTimer() {
     m_checkDaemonStatusTimer = std::make_shared<wxTimer>(this, ID_TIMER_CHECK_DAEMON_RUNNING);
-    m_checkDaemonStatusTimer->Start(3000);
+    m_checkDaemonStatusTimer->Start(500);
 }
 
 void MainFrame::UpdateDaemonInstallationStatus() {
@@ -82,8 +80,8 @@ void MainFrame::UpdateDaemonInstallationStatus() {
     m_daemonInstallationStatus->SetForegroundColour(m_daemonInstalled ? COLOR_SUC : COLOR_ERR);
     m_installUninstallButton->SetPosition(wxPoint(m_daemonInstalled ? 186 : 210, 6));
     m_installUninstallButton->SetLabelText(m_daemonInstalled ? "uninstall" : "install");
-    if(m_startStopButton) m_startStopButton->Show(m_daemonInstalled);
-    if(m_restartDaemonButton) m_restartDaemonButton->Show(m_daemonInstalled && m_daemonRunning);
+    if (m_startStopButton) m_startStopButton->Show(m_daemonInstalled);
+    if (m_restartDaemonButton) m_restartDaemonButton->Show(m_daemonInstalled && m_daemonRunning);
 }
 
 void MainFrame::UpdateDaemonRunningStatus() {
@@ -174,6 +172,8 @@ void MainFrame::OnRestartDaemonButtonClicked(wxCommandEvent &event) {
         SetStatusText("Failed restart daemon!");
         wxMessageBox(res.output.c_str(), "Failed restart daemon!", wxOK | wxICON_ERROR);
     }
+
+    UpdateDaemonRunningStatus();
 
     m_startStopButton->Enable();
     m_restartDaemonButton->Enable();

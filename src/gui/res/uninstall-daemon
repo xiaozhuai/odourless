@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-/usr/bin/sudo /bin/launchctl stop "odourless-daemon"
-/usr/bin/sudo /bin/launchctl remove "odourless-daemon"
+/usr/bin/sudo /bin/launchctl unload -w "/Library/LaunchDaemons/odourless-daemon.plist"
 /usr/bin/sudo /bin/rm -f "/Library/LaunchDaemons/odourless-daemon.plist"
 /usr/bin/sudo /usr/bin/killall Finder

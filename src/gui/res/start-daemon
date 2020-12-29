@@ -2,4 +2,4 @@
 set -e
 
 /usr/bin/sudo /usr/bin/killall Finder
-/usr/bin/sudo /bin/launchctl start "odourless-daemon"
+/usr/bin/sudo /bin/launchctl load -w "/Library/LaunchDaemons/odourless-daemon.plist"

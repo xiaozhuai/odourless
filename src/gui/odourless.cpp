@@ -32,10 +32,9 @@ public:
 
 #ifdef ODOURLESS_MUST_INSTALL_TO_APPLICATIONS
         if (ProcessHelper::getCurrentApplicationPath() != ODOURLESS_INSTALL_PATH) {
-            char msg[1024];
-            snprintf(msg, 1024,
-                     "You must install this application as %s, but not %s",
-                     ODOURLESS_INSTALL_PATH, ProcessHelper::getCurrentApplicationPath().c_str());
+            std::string msg = tfm::format("You must install this application as %s, but not %s",
+                                          ODOURLESS_INSTALL_PATH,
+                                          ProcessHelper::getCurrentApplicationPath());
             wxMessageBox(msg, "Installation Check", wxOK | wxICON_ERROR);
             Exit();
             return false;
