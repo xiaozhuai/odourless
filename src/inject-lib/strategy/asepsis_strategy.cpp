@@ -33,11 +33,7 @@ static int replacement_open(const char *path, int flags, mode_t mode) {
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
             }
-            LOG("open(path: %s, flags: %d, mode: %d)"
-                " ---> "
-                "open(path: %s, flags: %d, mode: %d)",
-                path, flags, mode,
-                fakePath, flags, mode);
+            LOG("open: %s ---> %s", path, fakePath);
             path = fakePath.c_str();
         }
     }
@@ -52,11 +48,7 @@ static int replacement_openx_np(const char *path, int flags, filesec_t fsec) {
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
             }
-            LOG("openx_np(path: %s, flags: %d, fsec: %p)"
-                " ---> "
-                "openx_np(path: %s, flags: %d, fsec: %p)",
-                path, flags, fsec,
-                fakePath, flags, fsec);
+            LOG("openx_np: %s ---> %s", path, fakePath);
             path = fakePath.c_str();
         }
     }
@@ -71,11 +63,7 @@ static int replacement_getattrlist(const char *path, void *list, void *buf, size
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
             }
-            LOG("getattrlist(path: %s, list: %p, buf: %p, bufSize: %lu, options: %x)"
-                " ---> "
-                "getattrlist(path: %s, list: %p, buf: %p, bufSize: %lu, options: %x)",
-                path, list, buf, bufSize, options,
-                fakePath, list, buf, bufSize, options);
+            LOG("getattrlist: %s ---> %s", path, fakePath);
             path = fakePath.c_str();
         }
     }
@@ -90,11 +78,7 @@ static int replacement_setattrlist(const char *path, void *list, void *buf, size
             if (FileSystemHelper::exists(path)) {
                 FileSystemHelper::rename(path, fakePath);
             }
-            LOG("setattrlist(path: %s, list: %p, buf: %p, bufSize: %lu, options: %x)"
-                " ---> "
-                "setattrlist(path: %s, list: %p, buf: %p, bufSize: %lu, options: %x)",
-                path, list, buf, bufSize, options,
-                fakePath, list, buf, bufSize, options);
+            LOG("setattrlist: %s ---> %s", path, fakePath);
             path = fakePath.c_str();
         }
     }
