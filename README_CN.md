@@ -8,6 +8,8 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具.
 
 支持 10.12 到 Big Sur
 
+**每次升级Odourless后，请手动重新安装daemon**
+
 **当前是非稳定版, 使用需自行承担风险.**
 
 # 预览
