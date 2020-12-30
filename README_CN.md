@@ -6,9 +6,7 @@
 
 Odourless是一个禁止MacOS系统生成.DS_Store的工具. 
 
-支持10.12到10.15.7
-
-暂时不支持Big Sur，将很快修复。
+支持 10.12 到 Big Sur
 
 **当前是非稳定版, 使用需自行承担风险.**
 
@@ -17,7 +15,7 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具.
 
 # 如何工作
 
-使用 `mach_inject` 注入 `Finder.app` 进程, 通过 `frida-gum` 来替换部分系统调用, 包括 `open`, `openx_np`, `getattrlist`, `setattrlist`.
+使用 `frida-core` 注入 `Finder.app` 进程, 通过 `frida-gum` 来替换部分系统调用, 包括 `open`, `openx_np`, `getattrlist`, `setattrlist`.
 
 每当 `Finder` 尝试调用这些方法且传入的路径是一个 `.DS_Store` 文件, 它将会将其替换为一个假的路径, 位于 `/usr/local/var/.odourless_cage`.
 
@@ -64,6 +62,8 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具.
 ```bash
 git clone https://github.com/xiaozhuai/odourless
 cd odourless
+rm -rf vendor
+unzip vendor.zip
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..

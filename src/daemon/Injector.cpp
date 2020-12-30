@@ -1,39 +1,27 @@
 #include "Injector.h"
-#include "mach_inject.h"
 #include "Log.h"
-
 #include <dlfcn.h>
 #include <csignal>
 
-Injector::Injector(const std::string &bootstrapLib) {
-    module = dlopen(bootstrapLib.c_str(), RTLD_NOW | RTLD_LOCAL);
-    LOG("module: %p", module);
-
-    if (!module) {
-        LOGE("dlopen error: %s", dlerror());
-        return;
-    }
-
-    bootstrapFunc = dlsym(module, "bootstrap");
-    LOG("bootstrapFunc: %p", bootstrapFunc);
-
-    if (!bootstrapFunc) {
-        LOGE("could not locate bootstrapFunc");
-        return;
-    }
+Injector::Injector() {
+    frida_init();
+    m_injector = frida_injector_new_inprocess();
 }
 
 Injector::~Injector() {
-    if (module) {
-        dlclose(module);
-        module = nullptr;
-    }
+    frida_injector_close_sync(m_injector, nullptr, nullptr);
+    g_object_unref(m_injector);
+    frida_deinit();
 }
 
-int Injector::inject(pid_t pid, const std::string &lib) {
-    if (!module || !bootstrapFunc) {
-        LOGE("inject failed, module: %p, bootstrapFunc: %p", module, bootstrapFunc);
-        return 1000;
+bool Injector::inject(pid_t pid, const std::string &lib) {
+    GError *error = nullptr;
+    auto id = frida_injector_inject_library_file_sync(m_injector, pid, lib.c_str(), "agent_main", "", nullptr, &error);
+    if (error != nullptr) {
+        LOGE("inject failed, %s", error->message);
+        g_error_free(error);
+        return false;
     }
-    return mach_inject((mach_inject_entry) bootstrapFunc, lib.c_str(), lib.size() + 1, pid, 0);
+    LOGE("inject suc");
+    return true;
 }

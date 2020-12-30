@@ -42,10 +42,9 @@ int main(int argc, char **argv) {
 
     const std::string finderProcessPath = "/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder";
     const std::string executableDirectory = ProcessHelper::getCurrentExecutableDirectory();
-    const std::string bootstrapLib = FileSystemHelper::realpath(executableDirectory + "/../lib/libbootstrap.dylib");
     const std::string injectLib = FileSystemHelper::realpath(executableDirectory + "/../lib/libodourless-inject.dylib");
 
-    Injector inj(bootstrapLib);
+    Injector inj;
 
     signal(SIGINT, sigHandler);
 
@@ -63,12 +62,7 @@ int main(int argc, char **argv) {
                 }
                 finderPid = pid;
                 sleep(3);
-                int err;
-                if ((err = inj.inject(finderPid, injectLib)) != 0) {
-                    LOGE("inject failed, error: %d", err);
-                } else {
-                    LOG("inject suc");
-                }
+                inj.inject(finderPid, injectLib);
             } else {
                 sleep(3);
                 // OK

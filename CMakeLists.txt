@@ -27,8 +27,6 @@ add_subdirectory(src/inject-lib)
 add_subdirectory(src/daemon)
 add_subdirectory(src/ctl)
 add_subdirectory(src/gui)
-add_subdirectory(vendor/mach_inject)
-add_subdirectory(vendor/osxinj)
 
 install(CODE "execute_process(COMMAND \"${CMAKE_SOURCE_DIR}/build-zip.sh\"
         \"${CMAKE_SOURCE_DIR}\"

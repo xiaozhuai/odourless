@@ -8,11 +8,11 @@
 #include "strategy/asepsis_strategy.h"
 
 extern "C" {
-__attribute__ ((constructor)) static void init();
-__attribute__ ((destructor)) static void deinit();
+void agent_main(const gchar *data, gboolean *stay_resident);
 }
 
-void init() {
+void agent_main(const gchar *data, gboolean *stay_resident) {
+    *stay_resident = true;
     Log::init(OdourlessUtils::getInjectLogPath());
     LOG("odourless-inject init");
     Hook::init();
@@ -21,9 +21,9 @@ void init() {
     }
 }
 
-void deinit() {
-    LOG("odourless-inject deinit");
-    cancel_asepsis_strategy();
-    Hook::destroy();
-    Log::destroy();
-}
+//void deinit() {
+//    LOG("odourless-inject deinit");
+//    cancel_asepsis_strategy();
+//    Hook::destroy();
+//    Log::destroy();
+//}

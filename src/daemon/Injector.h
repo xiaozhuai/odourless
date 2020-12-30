@@ -1,20 +1,20 @@
 #ifndef _INJECTOR_H_
 #define _INJECTOR_H_
 
+#include "frida-core.h"
 #include <string>
 #include <sys/types.h>
 
 class Injector {
 public:
-    explicit Injector(const std::string &bootstrapLib);
+    Injector();
 
     ~Injector();
 
-    int inject(pid_t pid, const std::string &lib);
+    bool inject(pid_t pid, const std::string &lib);
 
 private:
-    void *module = nullptr;
-    void *bootstrapFunc = nullptr;
+    FridaInjector *m_injector = nullptr;
 };
 
 #endif

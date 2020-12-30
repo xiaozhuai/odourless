@@ -6,9 +6,7 @@
 
 Odourless is a tool for preventing .DS_Store creation.
 
-Supported from 10.12 to 10.15.7.
-
-Currently not working on Big Sur, will fix soon.
+Supported from 10.12 to Big Sur.
 
 **Alpha version! Use it at your own risk!**
 
@@ -17,7 +15,7 @@ Currently not working on Big Sur, will fix soon.
 
 # How it works
 
-It use `mach_inject` to inject `Finder.app` and `frida-gum` to replace some syscall including `open`, `openx_np`, `getattrlist`, `setattrlist`.
+It use `frida-core` to inject `Finder.app` and `frida-gum` to replace some syscall including `open`, `openx_np`, `getattrlist`, `setattrlist`.
 
 Whenever `Finder` try call these function with `.DS_Store` file, it will replace the path to a fake one under the odourless cage directory `/usr/local/var/.odourless_cage`.
 
@@ -66,6 +64,8 @@ Type `brew install cmake` to install `cmake`.
 ```bash
 git clone https://github.com/xiaozhuai/odourless
 cd odourless
+rm -rf vendor
+unzip vendor.zip
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
