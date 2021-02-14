@@ -21,7 +21,7 @@ It use `frida-core` to inject `Finder.app` and `frida-gum` to replace some sysca
 
 Whenever `Finder` try call these function with `.DS_Store` file, it will replace the path to a fake one under the odourless cage directory `/usr/local/var/.odourless_cage`.
 
-As you see, it do not delete `.DS_Store`, but place all `.DS_Store` into one directory that you donot care about.
+It doesn't delete `.DS_Store`, but it places all `.DS_Store` into one directory that you don't care about.
 
 Many thanks to [@darwin](https://github.com/darwin) and [@JK3Y](https://github.com/JK3Y) !
 
