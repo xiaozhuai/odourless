@@ -30,7 +30,7 @@ static int replacement_open(const char *path, int flags, mode_t mode) {
     if (DSStoreHelper::isDSStore(path)) {
         fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
-            if (FileSystemHelper::exists(path)) {
+            if (FileSystemHelper::exists(path) && !FileSystemHelper::exists(fakePath)) {
                 FileSystemHelper::rename(path, fakePath);
             }
             LOG("open: %s ---> %s", path, fakePath);
@@ -45,7 +45,7 @@ static int replacement_openx_np(const char *path, int flags, filesec_t fsec) {
     if (DSStoreHelper::isDSStore(path)) {
         fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
-            if (FileSystemHelper::exists(path)) {
+            if (FileSystemHelper::exists(path) && !FileSystemHelper::exists(fakePath)) {
                 FileSystemHelper::rename(path, fakePath);
             }
             LOG("openx_np: %s ---> %s", path, fakePath);
@@ -60,7 +60,7 @@ static int replacement_getattrlist(const char *path, void *list, void *buf, size
     if (DSStoreHelper::isDSStore(path)) {
         fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
-            if (FileSystemHelper::exists(path)) {
+            if (FileSystemHelper::exists(path) && !FileSystemHelper::exists(fakePath)) {
                 FileSystemHelper::rename(path, fakePath);
             }
             LOG("getattrlist: %s ---> %s", path, fakePath);
@@ -75,7 +75,7 @@ static int replacement_setattrlist(const char *path, void *list, void *buf, size
     if (DSStoreHelper::isDSStore(path)) {
         fakePath = DSStoreHelper::makeCagePath(path);
         if (FileSystemHelper::ensureDir(FileSystemHelper::getDirectory(fakePath), 0755, true)) {
-            if (FileSystemHelper::exists(path)) {
+            if (FileSystemHelper::exists(path) && !FileSystemHelper::exists(fakePath)) {
                 FileSystemHelper::rename(path, fakePath);
             }
             LOG("setattrlist: %s ---> %s", path, fakePath);
