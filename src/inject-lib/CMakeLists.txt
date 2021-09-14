@@ -8,6 +8,6 @@ file(GLOB_RECURSE ODOURLESS_INJECT_SOURCE_FILES "./*.cpp" "./*.h")
 
 add_library(odourless-inject SHARED ${ODOURLESS_INJECT_SOURCE_FILES})
 target_include_directories(odourless-inject PRIVATE ../common)
-target_include_directories(odourless-inject PRIVATE ../../vendor/frida-gum)
-target_link_directories(odourless-inject PRIVATE ../../vendor/frida-gum)
+target_include_directories(odourless-inject PRIVATE ../../vendor/frida-gum/${CMAKE_OSX_ARCHITECTURES})
+target_link_directories(odourless-inject PRIVATE ../../vendor/frida-gum/${CMAKE_OSX_ARCHITECTURES})
 target_link_libraries(odourless-inject odourless-common frida-gum resolv)

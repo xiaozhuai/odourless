@@ -62,15 +62,12 @@ Odourless是一个禁止MacOS系统生成.DS_Store的工具.
 输入命令 `brew install cmake` 来安装 `cmake`.
 
 ```bash
-git clone https://github.com/xiaozhuai/odourless
+git clone --recursive https://github.com/xiaozhuai/odourless
 cd odourless
-rm -rf vendor
-unzip vendor.zip
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make install -j8
-open dist
+./download-frida-libs.sh
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=x86_64 -B build .
+cmake --build build -- install -j8
+open build/dist
 ```
 
 # 模块功能
