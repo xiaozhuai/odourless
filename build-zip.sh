@@ -4,7 +4,7 @@ PROJECT_ROOT="$1"
 SRC_APP="$2"
 VERSION="$3"
 DIST="$4"
-ARCH=$(uname -m)
+ARCH="$5"
 
 echo "Clear dist"
 rm -rf "${DIST}"

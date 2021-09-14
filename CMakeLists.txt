@@ -52,4 +52,5 @@ install(CODE "execute_process(COMMAND \"${CMAKE_SOURCE_DIR}/build-zip.sh\"
         \"${CMAKE_SOURCE_DIR}\"
         \"${CMAKE_BINARY_DIR}/Odourless.app\"
         \"${ODOURLESS_VERSION}\"
-        \"${CMAKE_BINARY_DIR}/dist\")")
+        \"${CMAKE_BINARY_DIR}/dist\"
+        \"${CMAKE_OSX_ARCHITECTURES}\")")
