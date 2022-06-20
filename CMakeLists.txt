@@ -25,7 +25,7 @@ set(wxBUILD_PRECOMP OFF)
 
 add_subdirectory(vendor/wxWidgets)
 
-set(ODOURLESS_VERSION 1.0.0)
+set(ODOURLESS_VERSION 1.1.0)
 
 set(ODOURLESS_MUST_INSTALL_TO_APPLICATIONS ON)
 

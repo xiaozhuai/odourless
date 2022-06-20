@@ -4,7 +4,7 @@ set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${DIR}"
 
-VERSION="15.1.1"
+VERSION="15.1.25"
 
 rm -rf vendor/frida-core
 rm -rf vendor/frida-gum
